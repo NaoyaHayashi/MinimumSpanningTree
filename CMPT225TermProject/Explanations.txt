@@ -1,0 +1,35 @@
+General Comments: There is no .dot files at first, but when you run the program,
+                  It will generate .dot files corresponding to each .txt file.
+
+-graph1.txt
+a typical graph
+
+-graph2.txt
+a graph with all same weigts
+
+-graph3.txt
+a graph with a bit more vertices and edges
+
+-graph4.txt
+a graph with all possible edges present (not considering self-loops and multi-graphs)
+
+-graph5.txt
+a graph that is one big cycle (no any other paths except the cycle)
+
+-graph6.txt
+a graph that is a tree (no cycle)
+
+-graph7.txt
+a graph with multi-graph (two or more edges between a pair of vertices)
+
+-graph8.txt
+a graph with self-loop
+
+-graph9.txt
+a graph that is a perfectly balanced binary tree 
+
+-graph10.txt
+a graph that is not connect 
+(In this case, my program considers that the file is corrupted, 
+and thus, it terminates without any output.)
+
