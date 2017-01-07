@@ -14,7 +14,6 @@ public class Main {
 		System.out.print("Type a file name that represents a graph (eg. graph1.txt,graph2.txt) and then, hit Enter: ");
 		String fileName = input.nextLine();
 		
-		//String fileName = "graph1.txt";
 		try{
 			In inputStream = new In(fileName);
 			EdgeWeightedGraph graph = new EdgeWeightedGraph(inputStream);
@@ -44,18 +43,27 @@ public class Main {
 			convert(fileName, aGraph, mst);
 		}
 		
+		String pathToDotCommand = "/usr/local/Cellar/Graphviz/2.40.1/bin/dot";
 		String fileNameWithoutExtension = fileName.substring(0, fileName.length()-4);
 		String dotFileName = fileNameWithoutExtension + ".dot";
-		String command[] = {"Contents/MacOS/Graphviz", dotFileName};
+		String pngFileName = fileNameWithoutExtension + ".png";
+		String createCommand[] = {pathToDotCommand, "-Tpng", dotFileName, "-o", pngFileName};
+		String openCommand[] = {"open", pngFileName};
 		
-		//Runtime r = Runtime.getRuntime();
-		ProcessBuilder PB = new ProcessBuilder(command);
+		ProcessBuilder PB_createPNG = new ProcessBuilder(createCommand);
+		ProcessBuilder PB_openPNG = new ProcessBuilder(openCommand);
 		try{
-			//Process process = r.exec(command);
-			PB.start();
+			PB_createPNG.start();
 		}
 		catch(Exception e){
-			System.out.println("Process Error!!");
+			System.out.println("CreatePNG: Process Error!!");
+		}
+		try{
+			Thread.sleep(1000);
+			PB_openPNG.start();
+		}
+		catch(Exception e){
+			System.out.println("OpenPNG: Process Error!!");
 		}
 	}
 	
